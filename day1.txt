@@ -1,0 +1,268 @@
+Codesignal GCA practice:
+
+
+Question 1:
+Array Manipulation
+
+Question 3: Tetris question:
+
+
+For each row in the height - figuresize:
+Row = 1
+	For each column in width-figuresize:
+Can_fit = True
+For x in range(figuresize):
+		For y in range(figuresize):
+			If field[row+x][]
+		
+
+Question 4:
+
+You have a set of numbers and you have to returns the numbers of pairs of indices (i,j) where i < j that have a sum of 2^k power
+
+Def answer(arr):
+	Count = defaultdict(int)
+	For num in arr:
+		Count[num] += 1
+		Second = (1 << ans) - num
+		Answer += count[second]
+	return answer
+
+
+For this question what we do is we create a counter so 
+
+Count = defaultdict(init)
+Now we iterate through the arr and then increase the counter of that number in our array and now we try to fund the missing number to get the 2^k which is 2^k - num so we check how many of those we have already in our counter and add that to answer and then return answer
+
+Longest Consecutive Integer:
+
+
+First convert the array into a set 
+Then keep iterating over the array if the number you are on - 1 is in the set then keep check the the next number is in the set.
+
+This ensures you only check the beginning of the consecutive sequence
+
+Pairs of songs with total durations divisible by 60 
+
+First we get an array named count with 60 0s to house all of the possible remainder we might have
+Then we create a pairs variable to check all valid pairs
+Now we iterate through the time array and then we find the remainder of that time t when divide by 60.
+After doing this we get what we need to complete the remainder by doing 60 - the remainder which gets us the remainder we need and then we need do mod 60 to get the precise case for if it was 0
+And then we add to pairs how many of the remainders we saw we already have from the array of 0s 
+And then we add 1 to the remainder of this current iteration’s slot in the array.
+
+Longest Palindrome by concatenating two letter words
+
+In this solution we use counter
+We start of with the length as 0 and then a usedCenter variable as false
+
+From collections import Counter
+Use Counter(words)
+Iterate from count,keys()
+
+We iterate through the counter of words and then if the word reversed and the word are not the same and if the word is smaller than the reversed which makes sure you that you account for the palindrome only going in one way. Than you check how many palindrome pairs you have 
+And then you add to the length *4 of the amount of pairs
+
+If the word reversed and the word is the same then we see how many counts of the word we have then we floor division to get pairs and then multiply the pairs by 4 and if the count of the word is odd then we use the center 
+
+In the end if we have used the center then we add 2 to the length 
+
+Then return the length 
+
+
+Array of Doubled Pairs
+
+First we convert the array into a counter
+Then we sort the counter by absolute value when iterating this allows us to go through negative values correctly going through -2 before -4 as *2 goes the opposite way
+If there are more counts of a number and the value twice it then we return false as we cannot have valid number of pairs
+After this we subtract the count of the number we have from the count of the double of the number we have so when we go there we have empty pairs we we shouldn’t have
+
+
+
+
+
+Count with nice subarray
+
+For this question we use an atmost algorithm which calculates the number of subarrays with atmost k 1s after we do this we can calculate atmost(k) - atmost(k-1) to get precisely the number of subarray with k odd numbers
+
+Once we have that precise number of subarrays we can return that
+
+For the atmost algorithm:
+
+We have 3 local variables for total subarrays, left and then odd count. Now we keep iterating through the array checking if the current number is odd if it is then we increment odd count by 1. If we have more odd counts than k then we subtract one from the left if the left is odd until we don’t. To keep track of the amount of subarrays we do left - right + 1 addition to res after every iteration across the array.
+
+After this we pretty much do atmost(k) - atmost(k-1) and return that.
+
+
+K-different pairs:
+
+For this problem, we handle 3 different case
+
+Where k == 0 where in this case the num[i] and num[j] have to be the same. So what we do is we iterate through the array keeping track of seen and duplicates. If the number is seen then we add it to the duplicates otherwise we add it to seen and in the end we return the amount of numbers in duplicates 
+
+When k > 0. This is when we iterate through the entire array that we turn into a set. After this we check after each number if there is a number + k in the set. If it is there then we add the pair (number, number + k) into the array for pairs. In the end return number of pairs. 
+
+
+Diagonal Traverse
+
+For this question we use the fact that all diagonals will have the same sum of row and column 
+
+So we create a dictionary where where iterate through the two dimensional array and add the specific values to the key for the correct sum of rows and columns. After this we pretty much have the correct values for each diagonal
+
+After this we sort the sums to get the diagonals correctly. After doing this we use the .extend method to turn the dictionary grouped items into one list where we add one value from the group data structure one by one and then we add this to the res array and we return this. 
+Find Occurrence of an Element in Array
+
+First, make local variables res and arr
+
+Next, iterate through the array and then check if x is in the array at that index if it is then add the index to the arr variable
+
+Then iterate over the queries array. If you find a number that is greater than the length of the arr variable then you add a -1 to the arr array variable, other wise you you find the number at querie-1 index of array and put that into res
+
+Finally, you return res.
+
+
+
+Spiral Matrix
+
+You have a local variable res which you put the spiral order in 
+You have left, right variables
+You have top, bottom variables
+
+You go while left < right and top < bottom 
+Then you go left to right in a for loop and then append the numbers onto res
+Then you increment top by 1
+
+Then you go top to bottom in a for loop and then append the numbers onto res
+Then you decrement right by 1
+
+Here you make sure that top is less than bottom still since you have changed top if so
+Then you go right to left in a for loop and then appen the numbers onto res
+Then you decrement bottom by once
+
+Then you check if left is still less than right as you decremented right by 1
+Then you go bottom to top in a for loop and then append the numbers into res
+Then you increment left by 1
+
+Finally you return the res local variable 
+
+
+
+
+
+
+
+
+
+Spiral Matrix II
+
+You have a local variable matrix which is a n by n array which you put the spiral order matrix in 
+You also have another local variable count where you increment the count for the matrix
+You have left, right variables
+You have top, bottom variables
+
+You go while left < right and top < bottom 
+Then you go left to right in a for loop and then append the numbers onto res
+Then you increment top by 1
+
+Then you go top to bottom in a for loop and then append the numbers onto res
+Then you decrement right by 1
+
+Here you make sure that top is less than bottom still since you have changed top if so
+Then you go right to left in a for loop and then appen the numbers onto res
+Then you decrement bottom by once
+
+Then you check if left is still less than right as you decremented right by 1
+Then you go bottom to top in a for loop and then append the numbers into res
+Then you increment left by 1
+
+Finally you return the matrix local variable 
+
+Rotate Image
+
+You iterate through the 2D array with two for loops and then switch row col element with col row element. When iterating the first loop you go until n and then the second for loop you go from i+1 to n as you do not want to change what you have changed before back.
+After this you reverse each 1D array in the 2D array
+
+
+Diagonal Traverse
+
+To solve this question we set 4 local variables for m, n, currrow, and currcol
+And the result
+
+To iterate through the array we we go through a for loop m* n times and then append the current row and column onto the res array
+
+We switch rows and columns like this
+If your row + col is even then you down in the diagonal so 
+First you check if it is edge column 
+That is when you increase your row to switch to what would be row + col is odd
+Otherwise if you are at the edge row then you would increase your col as you would switch to what would be row + col is odd
+Otherwise you you just move down so you row -=1 and col += 1 
+
+Now if you have row + col is odd then you move up the diagonal so
+First you check if it is an edge row to which you increase the col as you would switch to what would be row + col is even
+Then you check if it is an edge column in which case you would increase the row to what would be row + col is even 
+Else you would do row += 1 and col -= 1
+
+And then you would return the culmination of all of you appends to the result array. ‘
+
+
+Toeplitz Matrix
+
+You iterate through the rows and columns in a for loop inside a for loop but here you go from 1 to the amount of rows and 1 to the amount of columns 
+You check if the matrix at row and col is the same as the matrix at row -1 and col - 1
+If it is not then you return false
+
+
+Reshape the matrix 
+
+First you check if the m * n is equal to r * c to see if it is even possible to convert it
+Then if it, you create a new array res = [[0]*c for i in range(r) ]
+Then you iterate i from in a for loop loop in range to m * n 
+Then you employee this algo to fill up res matrix[i // c][i % c] = res[i // n][i % n]
+
+Image Overlap:
+
+
+You create two local variables one to house number of 1s from the first array and then the second array. You also create another variable called n to house the amount of the rows and columns of the array. 
+Now you full up the ones1 and ones2 arrays calculating the amount of ones from both arrays in tuples of (i,j) which is the row and column of the location of the ones in each array 
+Now you create a hashmap where 
+Then iterate through tuples of ones in the first array 
+Then inside that iterate through the tuples of ones in the second array 
+You check the difference of how much you shifted in x and y and then you store that in your hashmap and get the maximum occurrences all shifts that have happened
+In the end you return the key with the most occurrences by doing return max(map.values(), default=0)
+
+
+Two-Dimensional Array Traversal 
+
+To do this problem first we simulate the drop.
+So we create local variables height, width of the field and then we have another variable called figure size height and width of the figure 
+
+Now we iterate the drop so first for loop goes in range to width - figure_size + 1 ot try all possible areas of dropping
+Then we simulate the first drop
+Row = 1
+Then while the row < height - figure_size + 1
+Can_fit = True
+Then two for loop checking if there are no conflicting blocks inside the figure and field if there is then we set can_fit to false
+If can_fit is false then we break else we increase the row by 1 
+This process repeats until can_fit is false
+Once it is false then move back a row to the drop fit
+Then we iterate throught the height of the figure and then the width of the entire field to ensure we have completed some number of rows if the field[row+dx][col] is 1 or column <= column index < column + figure_size which means that the index is where the figure can be so column would be the first for loop variable and column + figure_size would be where it can end 
+And if it is fitting this conditional and the conditional for figure[dx][column_index - column] you do minus column as that is the place you drop from and in the context of figure if you drop from 1 then 1 for you would be 0. 
+Finally if its filled then we return the column which is where you dropped from.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
